@@ -40,13 +40,7 @@ function Signup() {
 						<label>Password</label>
 						<input type="password" name="password" value={form.password} onChange={handleChange} required className="form-control" />
 					</div>
-					<div className="mb-3">
-						<label>Role</label>
-						<select name="role" value={form.role} onChange={handleChange} className="form-control">
-							<option value="user">User</option>
-							<option value="admin">Admin</option>
-						</select>
-					</div>
+					
 					<button type="submit" className="btn btn-primary">Sign Up</button>
 				</form>
 				{message && <div className="mt-3">{message}</div>}

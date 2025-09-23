@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 function RightSection({ imageURL, productName, productDesription, learnMore }) {
   return (
     <div className="container mt-5">

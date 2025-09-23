@@ -4,7 +4,8 @@ import axios from 'axios';
 const Positions = () => {
   const [allpositions,setAllPositions]=useState([]);
   useEffect(()=>{
-    axios.get("http://localhost:3002/allPositions", {
+  const API_URL = process.env.REACT_APP_API_URL;
+  axios.get(`${API_URL}/allPositions`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
     }).then((res) => {
       setAllPositions(res.data);

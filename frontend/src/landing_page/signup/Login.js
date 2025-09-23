@@ -12,7 +12,8 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3002/login", form);
+  const API_URL = process.env.REACT_APP_API_URL;
+  const res = await axios.post(`${API_URL}/login`, form);
       localStorage.setItem("token", res.data.token);
       setMessage("Login successful!");
     } catch (err) {

@@ -12,7 +12,8 @@ function Signup() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const res = await axios.post("http://localhost:3002/register", form);
+			const API_URL = process.env.REACT_APP_API_URL;
+			const res = await axios.post(`${API_URL}/register`, form);
 			setMessage(res.data.message || "Registered successfully!");
 		} catch (err) {
 			setMessage(err.response?.data?.message || "Registration failed");

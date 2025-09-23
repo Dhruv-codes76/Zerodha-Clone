@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -43,43 +44,43 @@ function Navbar() {
               {!isLoggedIn && (
                 <>
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/signup">
+                    <Link className="nav-link active" aria-current="page" to="/signup">
                       Signup
-                    </a>
+                    </Link>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link active" href="/login">
+                    <Link className="nav-link active" to="/login">
                       Login
-                    </a>
+                    </Link>
                   </li>
                 </>
               )}
               {isLoggedIn && (
                 <li class="nav-item">
-                  <button class="nav-link active btn btn-link" style={{textDecoration: "none"}} onClick={handleSignout}>
+                  <button className="nav-link active btn btn-link" style={{textDecoration: "none"}} onClick={handleSignout}>
                     Signout
                   </button>
                 </li>
               )}
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <Link className="nav-link active" to="/about">
                   About
-                </a>
+                </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <Link className="nav-link active" to="/product">
                   Product
-                </a>
+                </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <Link className="nav-link active" to="/pricing">
                   Pricing
-                </a>
+                </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <Link className="nav-link active" to="/support">
                   Support
-                </a>
+                </Link>
               </li>
             </ul>
           </form>

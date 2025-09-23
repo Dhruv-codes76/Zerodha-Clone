@@ -30,7 +30,7 @@ dashboard - React Cra app(User Dashboard)
 
 **Backend**  
 - Node.js + Express  
-- PostgreSQL  
+- MongoDB
 - JWT authentication  
 - Bcrypt password hashing  
 

@@ -53,12 +53,14 @@ function Universe() {
             mis-selling.
           </p>
         </div>
-        <button
-          className="p-2 btn btn-primary fs-5 mt-5 mb-5"
-          style={{ width: "20%", margin: "0 auto" }}
-        >
-          Sign up for free
-        </button>
+        <Link to="/signup">
+          <button
+            className="p-2 btn btn-primary fs-5 mt-5 mb-5"
+            style={{ width: "20%", margin: "0 auto" }}
+          >
+            Sign up for free
+          </button>
+        </Link>
       </div>
     </div>
   );

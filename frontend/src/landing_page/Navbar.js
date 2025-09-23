@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function Navbar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    setIsLoggedIn(!!localStorage.getItem("token"));
+  }, []);
+
+  const handleSignout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    window.location.href = "/login";
+  };
+
   return (
     <nav
       class="navbar navbar-expand-lg border-bottom"
@@ -28,11 +40,27 @@ function Navbar() {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <form class="d-flex" role="search">
             <ul class="navbar-nav mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
-                  Signup
-                </a>
-              </li>
+              {!isLoggedIn && (
+                <>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/signup">
+                      Signup
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="/login">
+                      Login
+                    </a>
+                  </li>
+                </>
+              )}
+              {isLoggedIn && (
+                <li class="nav-item">
+                  <button class="nav-link active btn btn-link" style={{textDecoration: "none"}} onClick={handleSignout}>
+                    Signout
+                  </button>
+                </li>
+              )}
               <li class="nav-item">
                 <a class="nav-link active" href="#">
                   About

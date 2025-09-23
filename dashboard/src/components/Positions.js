@@ -4,8 +4,9 @@ import axios from 'axios';
 const Positions = () => {
   const [allpositions,setAllPositions]=useState([]);
   useEffect(()=>{
-    axios.get("http://localhost:3002/allPositions").then((res) => {
-      console.log(res.data)
+    axios.get("http://localhost:3002/allPositions", {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+    }).then((res) => {
       setAllPositions(res.data);
     })
   },[])

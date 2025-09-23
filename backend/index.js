@@ -22,16 +22,18 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+const authenticateToken = require("./middleware/authenticateToken");
+
 // Register endpoint
 app.post("/register", async (req, res) => {
   try {
-    const { name, email, username, password } = req.body;
+    const { name, email, username, password, role } = req.body;
     const existingUser = await UserModel.findOne({ $or: [{ email }, { username }] });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new UserModel({ name, email, username, password: hashedPassword });
+    const user = new UserModel({ name, email, username, password: hashedPassword, role: role || "user" });
     await user.save();
     res.status(201).json({ message: "User registered successfully" });
   } catch (err) {
@@ -51,7 +53,7 @@ app.post("/login", async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid username or password" });
     }
-    const token = jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET || "secret", { expiresIn: "1h" });
+    const token = jwt.sign({ id: user._id, username: user.username, role: user.role }, process.env.JWT_SECRET || "secret", { expiresIn: "1h" });
     res.json({ token });
   } catch (err) {
     res.status(500).json({ message: "Login failed", error: err.message });
@@ -227,17 +229,19 @@ app.post("/login", async (req, res) => {
 //   res.send("Done!");
 // });
 
-app.get("/allHoldings", async (req, res) => {
+
+// Protected routes
+app.get("/allHoldings", authenticateToken, async (req, res) => {
   let allHoldings = await HoldingsModel.find({});
   res.json(allHoldings);
 });
 
-app.get("/allPositions", async (req, res) => {
+app.get("/allPositions", authenticateToken, async (req, res) => {
   let allPositions = await PositionsModel.find({});
   res.json(allPositions);
 });
 
-app.post("/newOrder", async (req, res) => {
+app.post("/newOrder", authenticateToken, async (req, res) => {
   let newOrder = new OrdersModel({
     name: req.body.name,
     qty: req.body.qty,

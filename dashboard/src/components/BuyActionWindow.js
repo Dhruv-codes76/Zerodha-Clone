@@ -17,6 +17,8 @@ const BuyActionWindow = ({ uid }) => {
       qty: stockQuantity,
       price: stockPrice,
       mode: "BUY",
+    }, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
     });
 
     GeneralContext.closeBuyWindow();

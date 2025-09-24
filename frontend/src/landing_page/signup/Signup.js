@@ -78,12 +78,12 @@ function Signup() {
 						<label className="form-label">Confirm Password</label>
 						<input type="password" name="confirmPassword" value={confirmPassword} onChange={handleConfirmPasswordChange} required className="form-control form-control-lg" placeholder="Confirm your password" />
 					</div>
-					<button type="submit" className="btn btn-primary w-100 py-2 fs-5 mt-2">Sign Up</button>
+					  <button type="submit" className="btn btn-primary w-100 py-2 fs-5 mt-2">Sign Up</button>
 				</form>
 				{message && <div className="alert alert-info mt-4 text-center">{message}</div>}
-				<div className="mt-3 text-center">
-					Already have an account? <Link to="/login">Login</Link>
-				</div>
+							<div className="mt-3 text-center">
+								Already have an account? <Link to="/login">Login</Link>
+							</div>
 			</div>
 		</div>
 	);

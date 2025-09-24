@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function OpenAccount() {
   return (
@@ -9,12 +10,13 @@ function OpenAccount() {
           <p className="mb-4 fs-5 text-muted">
             Modern platforms and apps, ₹0 investments, and flat ₹20 intraday and F&O trades.
           </p>
-          <button
+          <Link
+            to="/signup"
             className="btn btn-primary fs-5 px-4 py-2 rounded-pill mb-3"
             style={{ width: "100%", maxWidth: "320px", margin: "0 auto" }}
           >
             Sign up Now
-          </button>
+          </Link>
         </div>
       </div>
     </div>

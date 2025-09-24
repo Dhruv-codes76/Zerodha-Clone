@@ -46,13 +46,12 @@ function Universe() {
           </p>
         </div>
         <div className="col-12 d-flex justify-content-center mt-4 mb-4">
-          <Link to="/signup" className="w-100" style={{maxWidth: "300px"}}>
-            <button
-              className="p-2 btn btn-primary fs-5 w-100"
-              style={{ minWidth: "180px" }}
-            >
-              Sign up for free
-            </button>
+          <Link
+            to="/signup"
+            className="btn btn-primary fs-5 w-100"
+            style={{ minWidth: "180px", maxWidth: "300px", padding: "0.5rem 1rem" }}
+          >
+            Sign up for free
           </Link>
         </div>
       </div>

@@ -4,12 +4,16 @@ import axios from 'axios';
 const Positions = () => {
   const [allpositions,setAllPositions]=useState([]);
   useEffect(()=>{
-  const API_URL = process.env.REACT_APP_API_URL;
+  const API_URL = `${process.env.REACT_APP_API_URL}/allpositions`;
   axios.get(`${API_URL}/allPositions`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
     }).then((res) => {
       setAllPositions(res.data);
-    })
+    }).catch((err) => {
+      if (err.response && (err.response.status === 401 || err.response.status === 403)) {
+        window.location.href = "/login";
+      }
+    });
   },[])
   return (
     <>

@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 function Stats() {
   return (
-    <div className="container p-3">
-      <div className="row p-5">
-        <div className="col-6 p-5">
+    <div className="container p-3 mb-5">
+      <div className="row p-3 p-md-5 g-4">
+        <div className="col-12 col-md-6 p-4 p-md-5 mb-4 mb-md-0">
           <h1 className="fs-2 mb-5">Trust with confidence</h1>
           <h2 className="fs-4">Customer-first always</h2>
           <p className="text-muted">
@@ -28,16 +28,14 @@ function Stats() {
             money.
           </p>
         </div>
-        <div className="col-6 p-5">
-          <img src="media/images/ecosystem.png" style={{ width: "90%" }} />
-          <div className="text-center">
-            <a href="" className="mx-5" style={{ textDecoration: "none" }}>
-              Explore our products{" "}
-              <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+        <div className="col-12 col-md-6 p-4 p-md-5">
+          <img src="media/images/ecosystem.png" className="img-fluid mb-4 mb-md-5" alt="Ecosystem" />
+          <div className="text-center mb-4 mb-md-5">
+            <a href="" className="mx-5 mb-3 d-inline-block" style={{ textDecoration: "none" }}>
+              Explore our products <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
             </a>
-            <a href="" style={{ textDecoration: "none" }}>
-              Try Kite demo{" "}
-              <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+            <a href="" className="mb-3 d-inline-block" style={{ textDecoration: "none" }}>
+              Try Kite demo <i className="fa fa-long-arrow-right" aria-hidden="true"></i>
             </a>
           </div>
         </div>

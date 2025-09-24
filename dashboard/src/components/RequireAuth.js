@@ -1,10 +1,11 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const RequireAuth = ({ children }) => {
-  const token = localStorage.getItem("token");
+  const token = Cookies.get("token");
   if (!token) {
-    return <Navigate to="/login" replace />;
+    window.location.href = process.env.REACT_APP_FRONTEND_URL + "/login";
+    return null;
   }
   return children;
 };

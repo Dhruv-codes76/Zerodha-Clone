@@ -20,9 +20,15 @@ const BuyActionWindow = ({ uid }) => {
       mode: "BUY",
     }, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+    })
+    .then(() => {
+      GeneralContext.closeBuyWindow();
+    })
+    .catch((err) => {
+      if (err.response && (err.response.status === 401 || err.response.status === 403)) {
+        window.location.href = "/login";
+      }
     });
-
-    GeneralContext.closeBuyWindow();
   };
 
   const handleCancelClick = () => {

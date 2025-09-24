@@ -8,11 +8,15 @@ const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
 
   useEffect(() => {
-  const API_URL = process.env.REACT_APP_API_URL;
+  const API_URL = `${process.env.REACT_APP_API_URL}/allholdings`;
   axios.get(`${API_URL}/allHoldings`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
     }).then((res) => {
       setAllHoldings(res.data);
+    }).catch((err) => {
+      if (err.response && (err.response.status === 401 || err.response.status === 403)) {
+        window.location.href = "/login";
+      }
     });
   }, []);
 

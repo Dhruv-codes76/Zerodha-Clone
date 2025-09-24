@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "./Menu.css";
+import Cookies from "js-cookie";
 
 import { Link } from "react-router-dom";
 
@@ -6,12 +8,29 @@ const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 
+  // Get username from token
+  let username = "";
+  try {
+    const token = Cookies.get("token");
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      username = payload.username || "User";
+    }
+  } catch (e) {
+    username = "User";
+  }
+
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
   };
 
-  const handleProfileClick = (index) => {
+  const handleProfileClick = () => {
     setIsProfileDropdownOpen(!isProfileDropdownOpen);
+  };
+
+  const handleLogout = () => {
+    Cookies.remove("token");
+    window.location.href = process.env.REACT_APP_FRONTEND_URL + "/login";
   };
 
   const menuClass = "menu";
@@ -90,9 +109,14 @@ const Menu = () => {
           </li>
         </ul>
         <hr />
-        <div className="profile" onClick={handleProfileClick}>
-          <div className="avatar">ZU</div>
-          <p className="username">USERID</p>
+        <div className="profile" style={{ position: 'relative', cursor: 'pointer' }} onClick={handleProfileClick}>
+          <div className="avatar">{username.slice(0,2).toUpperCase()}</div>
+          <p className="username">{username}</p>
+          {isProfileDropdownOpen && (
+            <div style={{ position: 'absolute', right: 0, top: '100%', background: '#fff', border: '1px solid #ddd', borderRadius: 4, minWidth: 120, zIndex: 10 }}>
+              <button className="dropdown-item" style={{ width: '100%', padding: '0.5rem 1rem', border: 'none', background: 'none', textAlign: 'left', cursor: 'pointer' }} onClick={handleLogout}>Logout</button>
+            </div>
+          )}
         </div>
       </div>
     </div>

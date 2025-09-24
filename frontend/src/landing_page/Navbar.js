@@ -16,39 +16,40 @@ function Navbar() {
 
   return (
     <nav
-      class="navbar navbar-expand-lg border-bottom"
+      className="navbar navbar-expand-lg border-bottom w-100"
       style={{ backgroundColor: "#FFF" }}
     >
-      <div class="container p-2">
-        <Link className="navbar-brand" to="/">
-          <img
-            src="media/images/logo.svg"
-            style={{ width: "25%" }}
-            alt="Logo"
-          />
-        </Link>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <form class="d-flex" role="search">
-            <ul class="navbar-nav mb-lg-0">
+      <div className="container-fluid px-4">
+        <div className="d-flex w-100 align-items-center justify-content-between">
+          <Link className="navbar-brand d-flex align-items-center" to="/" style={{ minWidth: "120px" }}>
+            <img
+              src="media/images/logo.svg"
+              className="img-fluid"
+              style={{ maxHeight: "32px", maxWidth: "120px", width: "auto" }}
+              alt="Logo"
+            />
+          </Link>
+          <button
+            className="navbar-toggler ms-2"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul className="navbar-nav mb-lg-0 d-flex align-items-center gap-2">
               {!isLoggedIn && (
                 <>
-                  <li class="nav-item">
+                  <li className="nav-item mb-2 mb-lg-0">
                     <Link className="nav-link active" aria-current="page" to="/signup">
                       Signup
                     </Link>
                   </li>
-                  <li class="nav-item">
+                  <li className="nav-item mb-2 mb-lg-0">
                     <Link className="nav-link active" to="/login">
                       Login
                     </Link>
@@ -56,34 +57,34 @@ function Navbar() {
                 </>
               )}
               {isLoggedIn && (
-                <li class="nav-item">
-                  <button className="nav-link active btn btn-link" style={{textDecoration: "none"}} onClick={handleSignout}>
+                <li className="nav-item mb-2 mb-lg-0">
+                  <button type="button" className="nav-link active btn btn-link" style={{textDecoration: "none"}} onClick={handleSignout}>
                     Signout
                   </button>
                 </li>
               )}
-              <li class="nav-item">
+              <li className="nav-item mb-2 mb-lg-0">
                 <Link className="nav-link active" to="/about">
                   About
                 </Link>
               </li>
-              <li class="nav-item">
+              <li className="nav-item mb-2 mb-lg-0">
                 <Link className="nav-link active" to="/product">
                   Product
                 </Link>
               </li>
-              <li class="nav-item">
+              <li className="nav-item mb-2 mb-lg-0">
                 <Link className="nav-link active" to="/pricing">
                   Pricing
                 </Link>
               </li>
-              <li class="nav-item">
+              <li className="nav-item mb-2 mb-lg-0">
                 <Link className="nav-link active" to="/support">
                   Support
                 </Link>
               </li>
             </ul>
-          </form>
+          </div>
         </div>
       </div>
     </nav>

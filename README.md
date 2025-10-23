@@ -7,7 +7,6 @@ It demonstrates **user authentication, a landing page, and a basic trading dashb
 
 ## Live Demo Links
 
-- **Backend (Render):** [https://zerodha-clone-t4of.onrender.com](https://zerodha-clone-t4of.onrender.com)  
 - **Frontend (Vercel):** [https://zerodha-clone-ashy-two.vercel.app](https://zerodha-clone-ashy-two.vercel.app)  
 - **Dashboard (Vercel):** [https://zerodha-clone-ibfd.vercel.app](https://zerodha-clone-ibfd.vercel.app)  
 
